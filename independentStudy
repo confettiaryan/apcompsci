@@ -1,1 +1,17 @@
-
+public class McNairPlanner {
+  private String name;
+  private int grade;
+  private int day;
+  private String inspirationalMessage;
+    public McNairPlanner() {
+        name = "";
+        grade = 0;
+        day = 0;
+        inspirationalMessage = "";
+      }
+    public McNairPlanner (String name, int grade, int day, String inspirationalMessage) {
+      this.name = name;
+      this.grade = grade;
+      this.day = day;
+      this.inspirationalMessage = inspirationalMessage;
+    }
