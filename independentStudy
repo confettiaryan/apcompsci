@@ -1,17 +1,59 @@
-public class McNairPlanner {
-  private String name;
-  private int grade;
-  private int day;
-  private String inspirationalMessage;
-    public McNairPlanner() {
-        name = "";
-        grade = 0;
-        day = 0;
-        inspirationalMessage = "";
-      }
-    public McNairPlanner (String name, int grade, int day, String inspirationalMessage) {
-      this.name = name;
-      this.grade = grade;
-      this.day = day;
-      this.inspirationalMessage = inspirationalMessage;
-    }
+package independentStudy;
+
+import java.awt.Graphics;
+import java.util.ArrayList;
+
+public class ToDoList extends Schedule
+{
+	public ToDoList() 
+	{
+		private ArrayList<String>list;
+		private int day;
+		public ArrayList<String>needToAdd;
+		
+		public ToDoList {
+			list = new ArrayList<String>();
+			day = 0; 
+			needToAdd = new ArrayList<String>();
+		}
+		public ToDoList(ArrayList<String>list, int day, ArrayList<String>needToAdd) {
+			this.list = list;
+			this.day = day; 
+			this.needToAdd = needToAdd;
+		}
+		public String getList() {
+			String forTheDay = "";
+			for (int i = 0; i<list.size(); i++) {
+				if (list.get(i) == day) {
+					list.get(i) = forTheDay;
+				}
+			}
+			return forTheDay;
+		}
+		public static void setList(ArrayList<String>list) {
+			this.list = list;
+		}
+		public static void (int day) {
+			this.day = day;
+		}
+		public void addToDoList(ArrayList<String>list, ArrayList<String>needToAdd) {
+			ArrayList<String>updatedList = new ArrayList<String>();
+			for (int i = 0; i<list.size(); i++) {
+				if (list.get(i) == null) {
+					list.get(i+1).equals(list.get(i));
+					updatedList.get(i).equals(list.get(i));
+				}
+				for (int i = 0; i<needToAdd.size(); i++) {
+					if (list.get(i) == null)
+					{
+						list.get(i).equals(needToAdd.get(i));
+						updatedList.get(i).equals(list.get(i));
+					}
+				}
+			}
+		}
+		
+		
+	}
+
+}
