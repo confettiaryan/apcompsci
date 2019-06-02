@@ -1,78 +1,75 @@
 package independentStudy;
 
-import java.awt.Graphics;
-import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.*;
 
-public class ToDoList extends Schedule
+public class Schedule 
 {
 	public static void main(String[] args) {
-		System.out.println("Welcome to your daily list!");
-		System.out.println("Here you will find what you need to do for the day!");
-		
+		ArrayList<String>neededList = new ArrayList<String>();
+		System.out.println("You are ready to add things to your schedule!");
+		System.out.println("Please select one: a) add to schedule or b) visit schedule");
 		Scanner scan = new Scanner(System.in);
-		
-		
-	}
-	
-	
-	
-	
-	
-	
-	public ToDoList() 
-	{
-		private ArrayList<String>list;
-		private int day;
-		public ArrayList<String>needToAdd;
-		
-		public ToDoList {
-			list = new ArrayList<String>();
-			day = 0; 
-			needToAdd = new ArrayList<String>();
-		}
-		public ToDoList(ArrayList<String>list, int day, ArrayList<String>needToAdd) {
-			this.list = list;
-			this.day = day; 
-			this.needToAdd = needToAdd;
-		}
-		public String getList() {
-			String forTheDay = "";
-			for (int i = 0; i<list.size(); i++) {
-				if (list.get(i) == day) {
-					list.get(i) = forTheDay;
+		if(scan.equals("a")) {
+			System.out.println("What would you like to add?");
+			System.out.println("a. A new task, b. A new assignment");
+			Scanner scan1 = new Scanner(System.in);
+			if(scan1.equals("a")) {
+				System.out.println("Enter your task: ");
+				Scanner scan3 = new Scanner(System.in);
+				String str = scan3.nextLine();
+				System.out.println("How important is it? Rate on a scale of 1-100.");
+				Scanner scan4 = new Scanner(System.in);
+				int num = scan4.nextInt();
+				createNewTask(neededList, str, num);
+				System.out.println("Congratulations! Task has been added!");
+				System.out.println("Enter YES if you would like to see updated schedule.");
+				Scanner scan5 = new Scanner(System.in);
+				if (scan5.equals("YES")) {
+					viewMySchedule(neededList);
+				} else {
+					System.out.println("Good job for being organized! Thanks for using!");
 				}
 			}
-			return forTheDay;
-		}
-		public static void setList(ArrayList<String>list) {
-			this.list = list;
-		}
-		public static void (int day) {
-			this.day = day;
-		}
-		public void addToDoList(ArrayList<String>list, ArrayList<String>needToAdd) {
-			ArrayList<String>updatedList = new ArrayList<String>();
-			for (int i = 0; i<list.size(); i++) {
-				if (list.get(i) == null) {
-					list.get(i+1).equals(list.get(i));
-					updatedList.get(i).equals(list.get(i));
-				}
-				for (int i = 0; i<needToAdd.size(); i++) {
-					if (list.get(i) == null)
-					{
-						list.get(i).equals(needToAdd.get(i));
-						updatedList.get(i).equals(list.get(i));
-					}
-				}
-			}
-		}
-		public ArrayList<String> completed(ArrayList<String>list){
-			super(ArrayList<String>updatedList);
+		} else if(scan.equals("b")) {
+			System.out.println("Below is your schedule!");
+			retrieveSchBeforeUpdate(neededList);
 		}
 		
+	} 
+}
+	public Schedule {		
+		private ArrayList<String>schedule;
+		private String newTask;
+		private int importance;
 		
-		
+		public Schedule() {
+			schedule = new ArrayList<String>();
+			newTask = "";
+			importance = 0;
+		}
+		public Schedule(ArrayList<String>schedule, String newTask, int importance) {
+			this.schedule = schedule;
+			this.newTask = newTask;
+			this.importance = importance;
+		}
+		public ArrayList<String> getList(){
+			return this.schedule;
+		}
+		public void setList(ArrayList<String>schedule) {
+			this.schedule = schedule;
+		}
+		public static void createNewTask(ArrayList<String>schedule, String newTask, int importance) {
+			schedule.add(importance, newTask);
+			
+		}
+		public static ArrayList<String> retrieveSchBeforeUpdate(ArrayList<String>schedule)
+		{
+			return schedule;
+		}
+		public static ArrayList<String> viewMySchedule(ArrayList<String>schedule){
+			return schedule;
+		}
 	}
-
 }
