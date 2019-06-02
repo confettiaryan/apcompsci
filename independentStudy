@@ -2,9 +2,24 @@ package independentStudy;
 
 import java.awt.Graphics;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class ToDoList extends Schedule
 {
+	public static void main(String[] args) {
+		System.out.println("Welcome to your daily list!");
+		System.out.println("Here you will find what you need to do for the day!");
+		
+		Scanner scan = new Scanner(System.in);
+		
+		
+	}
+	
+	
+	
+	
+	
+	
 	public ToDoList() 
 	{
 		private ArrayList<String>list;
@@ -52,6 +67,10 @@ public class ToDoList extends Schedule
 				}
 			}
 		}
+		public ArrayList<String> completed(ArrayList<String>list){
+			super(ArrayList<String>updatedList);
+		}
+		
 		
 		
 	}
