@@ -1,14 +1,17 @@
 package independentStudy;
 
-import java.util.Scanner;
-import java.util.ArrayList;
 import java.util.*;
 
 public class Schedule 
 {
+	
 	public static void main(String[] args) {
 		ArrayList<String>neededList = new ArrayList<String>();
 		System.out.println("You are ready to add things to your schedule!");
+		System.out.println("But before you begin, please enter the date in mmddyyyy format!");
+		Scanner scan10 = new Scanner(System.in);
+		int date = scan10.nextInt();
+		setDate(scan10);
 		System.out.println("Please select one: a) add to schedule or b) visit schedule");
 		Scanner scan = new Scanner(System.in);
 		if(scan.equals("a")) {
@@ -24,6 +27,15 @@ public class Schedule
 				int num = scan4.nextInt();
 				createNewTask(neededList, str, num);
 				System.out.println("Congratulations! Task has been added!");
+			} else {
+				System.out.println("What type of assignment is it? a. test, b. quiz, c. project, or d. homework?");
+				Scanner scan6 = new Scanner(System.in);
+				String str1 = scan6.nextLine();
+				if (str1.equals("test")) {
+					
+				
+					
+				}
 				System.out.println("Enter YES if you would like to see updated schedule.");
 				Scanner scan5 = new Scanner(System.in);
 				if (scan5.equals("YES")) {
@@ -38,29 +50,50 @@ public class Schedule
 		}
 		
 	} 
-}
+
 	public Schedule {		
 		private ArrayList<String>schedule;
 		private String newTask;
 		private int importance;
+		private int date;
 		
-		public Schedule() {
+		public Schedule() 
+		{
 			schedule = new ArrayList<String>();
 			newTask = "";
 			importance = 0;
+			date = 0;
 		}
-		public Schedule(ArrayList<String>schedule, String newTask, int importance) {
+		public Schedule(int date)
+		{
+			schedule = new ArrayList<String>();
+			newTask = "";
+			importance = 0;
+			date = 0;
+		}
+		public Schedule(ArrayList<String>schedule, String newTask, int importance, int date) 
+		{
 			this.schedule = schedule;
 			this.newTask = newTask;
 			this.importance = importance;
+			this.date = date;
 		}
-		public ArrayList<String> getList(){
+		public ArrayList<String> getList()
+		{
 			return this.schedule;
 		}
-		public void setList(ArrayList<String>schedule) {
+		public void setList(ArrayList<String>schedule) 
+		{
 			this.schedule = schedule;
 		}
-		public static void createNewTask(ArrayList<String>schedule, String newTask, int importance) {
+		public static int getDate() {
+			return this.date;
+		}
+		public void setDate(Scanner scan10) {
+			this.date = scan10;
+		}
+		public static void createNewTask(ArrayList<String>schedule, String newTask, int importance) 
+		{
 			schedule.add(importance, newTask);
 			
 		}
@@ -68,8 +101,25 @@ public class Schedule
 		{
 			return schedule;
 		}
-		public static ArrayList<String> viewMySchedule(ArrayList<String>schedule){
+		public static ArrayList<String> viewMySchedule(ArrayList<String>schedule)
+		{
 			return schedule;
 		}
+		public static ArrayList<String> addTest(ArrayList<String>schedule)
+		{
+			String temp = "test";
+			for (int i = 0; i<schedule.size(); i++) 
+			{
+				if(schedule.get(i)!= null) 
+				{
+					if (schedule.get(i).getDate<myDate)
+					{
+						schedule.add(i, "test");
+					}
+				} else {
+					
+				}
+			}
+		}
+		
 	}
-}
