@@ -11,7 +11,7 @@ public class Schedule
 		System.out.println("But before you begin, please enter the date in mmddyyyy format!");
 		Scanner scan10 = new Scanner(System.in);
 		int date = scan10.nextInt();
-		setDate(scan10);
+		setDate(date);
 		System.out.println("Please select one: a) add to schedule or b) visit schedule");
 		Scanner scan = new Scanner(System.in);
 		if(scan.equals("a")) {
@@ -29,13 +29,46 @@ public class Schedule
 				System.out.println("Congratulations! Task has been added!");
 			} else {
 				System.out.println("What type of assignment is it? a. test, b. quiz, c. project, or d. homework?");
-				Scanner scan6 = new Scanner(System.in);
+				System.out.println("Please enter your desired choice.");
 				String str1 = scan6.nextLine();
 				if (str1.equals("test")) {
+					addTest(neededList);
+					System.out.println("You've added this upcoming test to your list!");
+					System.out.println("Would you like to add something else?");
+					Scanner scan20 = new Scanner (System.in);
+					String str20 = scan20.nextLine();
+					if (str20.equals("YES")) {
+						System.out.println("Please add new task by clicking run.");
+					} else {
+						System.out.println("Good Job!");
+						break;
+					}
+				} else if (str1.equals("quiz")) {
+					addQuiz(neededList);
+					System.out.println("You've added this upcoming quiz to your list!");
+					System.out.println("Would you like to add something else?");
+					Scanner scan21 = new Scanner (System.in);
+					String str21 = scan21.nextLine();
+					if (str21.equals("YES")) {
+						System.out.println("Please add new task by clicking run.");
+					} else {
+						System.out.println("Good Job!");
+						break;
+					}
 					
-				
-					
-				}
+				} else if (str1.equals("project")) {
+					addProject(neededList);
+					System.out.println("You've added this upcoming project to your list!")
+					System.out.println("Would you like to add something else?")
+					Scanner scan22 = new Scanner (System.in);
+					String str22 = scan22.nextLine();
+					if (str22.equals("YES")) {
+						System.out.println("Please add new task by clicking run.");
+					} else {
+						System.out.println("Good Job!");
+						break;
+					}
+				} else if (str1.equals("homework"))
 				System.out.println("Enter YES if you would like to see updated schedule.");
 				Scanner scan5 = new Scanner(System.in);
 				if (scan5.equals("YES")) {
@@ -86,11 +119,11 @@ public class Schedule
 		{
 			this.schedule = schedule;
 		}
-		public static int getDate() {
+		public int getDate() {
 			return this.date;
 		}
-		public void setDate(Scanner scan10) {
-			this.date = scan10;
+		public void setDate(int date) {
+			this.date = date;
 		}
 		public static void createNewTask(ArrayList<String>schedule, String newTask, int importance) 
 		{
@@ -115,11 +148,65 @@ public class Schedule
 					if (schedule.get(i).getDate<myDate)
 					{
 						schedule.add(i, "test");
+						schedule.add(date);
 					}
 				} else {
-					
+					i++;
+				}
+			}
+		}
+		public static ArrayList<String> addQuiz(ArrayList<String> schedule)
+		{
+			String temp = "quiz";
+			for (int i = 0; i<schedule.size(); i++) 
+			{
+				if(schedule.get(i)!= null) 
+				{
+					if (schedule.get(i).getDate<myDate)
+					{
+						schedule.add(i, "quiz");
+						schedule.add(date);
+					}
+				} else {
+					i++;
+				}
+			}
+		}
+		public static ArrayList<String> addProject(ArrayList<String>schedule)
+		{
+			String temp = "project";
+			for (int i = 0; i<schedule.size(); i++) 
+			{
+				if(schedule.get(i)!= null) 
+				{
+					if (schedule.get(i).getDate<myDate)
+					{
+						schedule.add(i, "project");
+						schedule.add(date);
+					}
+				} else {
+					i++;
+				}
+			}
+		}
+		public static ArrayList<String> addHomework(ArrayList<String>schedule)
+		{
+			String temp = "homework";
+			for (int i = 0; i<schedule.size(); i++) 
+			{
+				if(schedule.get(i)!= null) 
+				{
+					if (schedule.get(i).getDate<myDate)
+					{
+						schedule.add(i, "homework");
+						schedule.add(date);
+					}
+				} else {
+					i++;
 				}
 			}
 		}
 		
+		
 	}
+}
