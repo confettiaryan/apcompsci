@@ -61,8 +61,8 @@ public class Schedule
 					
 				} else if (str1.equals("project")) {
 					addProject(neededList);
-					System.out.println("You've added this upcoming project to your list!")
-					System.out.println("Would you like to add something else?")
+					System.out.println("You've added this upcoming project to your list!");
+					System.out.println("Would you like to add something else?");
 					Scanner scan22 = new Scanner (System.in);
 					String str22 = scan22.nextLine();
 					if (str22.equals("YES")) {
