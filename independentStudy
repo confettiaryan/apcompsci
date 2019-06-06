@@ -88,27 +88,26 @@ public class ScheduleTester
 		
 	} 
 }
-	public Schedule {		
+	
+package CompSci;
+
+import java.util.ArrayList;
+
+	public class Schedule
+	{
 		private ArrayList<String>schedule;
-		private String newTask;
-		private int importance;
-		private int date;
+		private ArrayList<String>newTask;
+		private ArrayList<Integer>importance;
+		private ArrayList<Integer>date;
 		
 		public Schedule() 
 		{
 			schedule = new ArrayList<String>();
-			newTask = "";
-			importance = 0;
-			date = 0;
+			newTask =  new ArrayList<String>();
+			importance = new ArrayList<Integer>();
+			date = new ArrayList<Integer>();
 		}
-		public Schedule(int date)
-		{
-			schedule = new ArrayList<String>();
-			newTask = "";
-			importance = 0;
-			date = 0;
-		}
-		public Schedule(ArrayList<String>schedule, String newTask, int importance, int date) 
+		public Schedule(ArrayList<String>schedule, ArrayList<String>newTask, ArrayList<Integer>importance, ArrayList<Integer>date) 
 		{
 			this.schedule = schedule;
 			this.newTask = newTask;
@@ -129,22 +128,19 @@ public class ScheduleTester
 		public void setDate(int date) {
 			this.date = date;
 		}
-		public static void createNewTask(ArrayList<String>schedule, String newTask, int importance) 
+		public void createNewTask(ArrayList<String>schedule, ArrayList<String>newTask, ArrayList<Integer>importance) 
 		{
 			schedule.add(importance, newTask);
 			
 		}
-		public static ArrayList<String> retrieveSchBeforeUpdate(ArrayList<String>schedule)
+		
+		public static ArrayList<String> addAssignment(ArrayList<String>schedule)
 		{
-			return schedule;
-		}
-		public static ArrayList<String> viewMySchedule(ArrayList<String>schedule)
-		{
-			return schedule;
-		}
-		public static ArrayList<String> addTest(ArrayList<String>schedule)
-		{
-			String temp = "test";
+			String test = "test";
+			String quiz = "quiz";
+			String project = "project";
+			String homework = "homework";
+			
 			for (int i = 0; i<schedule.size(); i++) 
 			{
 				if(schedule.get(i)!= null) 
@@ -159,58 +155,8 @@ public class ScheduleTester
 				}
 			}
 		}
-		public static ArrayList<String> addQuiz(ArrayList<String> schedule)
-		{
-			String temp = "quiz";
-			for (int i = 0; i<schedule.size(); i++) 
-			{
-				if(schedule.get(i)!= null) 
-				{
-					if (schedule.get(i).getDate<myDate)
-					{
-						schedule.add(i, "quiz");
-						schedule.add(date);
-					}
-				} else {
-					i++;
-				}
-			}
-		}
-		public static ArrayList<String> addProject(ArrayList<String>schedule)
-		{
-			String temp = "project";
-			for (int i = 0; i<schedule.size(); i++) 
-			{
-				if(schedule.get(i)!= null) 
-				{
-					if (schedule.get(i).getDate<myDate)
-					{
-						schedule.add(i, "project");
-						schedule.add(date);
-					}
-				} else {
-					i++;
-				}
-			}
-		}
-		public static ArrayList<String> addHomework(ArrayList<String>schedule)
-		{
-			String temp = "homework";
-			for (int i = 0; i<schedule.size(); i++) 
-			{
-				if(schedule.get(i)!= null) 
-				{
-					if (schedule.get(i).getDate<myDate)
-					{
-						schedule.add(i, "homework");
-						schedule.add(date);
-					}
-				} else {
-					i++;
-				}
-			}
-		}
-		
-		
+			
 	}
+
+
 }
