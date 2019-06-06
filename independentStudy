@@ -1,78 +1,99 @@
 package independentStudy;
 
 import java.awt.Graphics;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
+import java.awt.FlowLayout;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 
-public class ToDoList extends Schedule
-{
-	public static void main(String[] args) {
-		System.out.println("Welcome to your daily list!");
-		System.out.println("Here you will find what you need to do for the day!");
-		
-		Scanner scan = new Scanner(System.in);
-		
-		
-	}
-	
-	
-	
-	
-	
-	
-	public ToDoList() 
+
+public class ToDoList extends Schedule implements Comparable
 	{
-		private ArrayList<String>list;
+		private ArrayList<String>schedule;
+		private ArrayList<String>needToAdd;
+		private int month;
+		private String date;
+		private int year;
 		private int day;
-		public ArrayList<String>needToAdd;
 		
-		public ToDoList {
-			list = new ArrayList<String>();
-			day = 0; 
+		public ToDoList() {
+			schedule = new ArrayList<String>();
 			needToAdd = new ArrayList<String>();
+			month = 0;
+			day = 0;
+			date = "";
+			year = 0;
 		}
-		public ToDoList(ArrayList<String>list, int day, ArrayList<String>needToAdd) {
-			this.list = list;
-			this.day = day; 
-			this.needToAdd = needToAdd;
+		public ToDoList(int date) {
+			super(date);
+			schedule = new ArrayList<String>();
+			needToAdd = new ArrayList<String>();
+			month = 0;
+			day = 0;
+			year = 0;
 		}
-		public String getList() {
-			String forTheDay = "";
-			for (int i = 0; i<list.size(); i++) {
-				if (list.get(i) == day) {
-					list.get(i) = forTheDay;
-				}
-			}
-			return forTheDay;
+		public ToDoList(ArrayList<String>schedule) {
+			super();
+			needToAdd = new ArrayList<String>();
+			month = 0;
+			date = "";
+			year = 0;
+			
 		}
-		public static void setList(ArrayList<String>list) {
-			this.list = list;
-		}
-		public static void (int day) {
+		public ToDoList(int month, int day, int year) {
+			this.month = month;
 			this.day = day;
+			this.year = year;
 		}
-		public void addToDoList(ArrayList<String>list, ArrayList<String>needToAdd) {
-			ArrayList<String>updatedList = new ArrayList<String>();
-			for (int i = 0; i<list.size(); i++) {
-				if (list.get(i) == null) {
-					list.get(i+1).equals(list.get(i));
-					updatedList.get(i).equals(list.get(i));
+		public ArrayList<String> getList() {
+			return schedule;
+		}
+		public void setList(ArrayList<String>schedule) {
+			this.schedule = schedule;
+		}
+		
+		public void completedItem(ArrayList<String>schedule) {
+			System.out.println("Checking things off your list? Enter yes, otherwise no.");
+			Scanner scan = new Scanner(System.in);
+			String str = scan.nextLine();
+			System.out.println("At this time, you can only check things off one at a time.");
+			System.out.println("Please enter the date of the item you want to check off, with specified title.");
+			System.out.println("The date must be inputted as mmddyyy format.");
+			Scanner scan1 = new Scanner(System.in);
+			String str1 = scan.nextLine();
+			int str2 = Integer.parseInt(str1);
+			if(str.equals("yes")) {
+				for (int i = 0; i<schedule.size(); i++) {
+					if (schedule.get(i).equals(str1)) {
+						schedule.remove(i);
+					} else {
+						break;
+					}
 				}
-				for (int i = 0; i<needToAdd.size(); i++) {
-					if (list.get(i) == null)
-					{
-						list.get(i).equals(needToAdd.get(i));
-						updatedList.get(i).equals(list.get(i));
+			} else {
+				System.out.println("Please remember to check things that you have completed. Nothing more, nothing less.");
+			}
+		}
+		
+		public ArrayList<String> viewMyList(ArrayList<String>schedule){
+			ArrayList<String> willShow = new ArrayList<String>();
+			System.out.println("Hey! If you came here, it seems like you want to see your list! Enter yes to make sure!");
+			Scanner scan = new Scanner(System.in);
+			String scan1 = scan.nextLine();
+			if (scan1.equals("yes")) {
+				for (int i= 0; i<schedule.size(); i++) {
+					if(schedule.get(i).equals(date)) {
+						String show = schedule.get(i);
+						willShow.add(show);
 					}
 				}
 			}
+			return willShow;
 		}
-		public ArrayList<String> completed(ArrayList<String>list){
-			super(ArrayList<String>updatedList);
+		@Override
+		public int compareTo(Object arg0) {
+			// TODO Auto-generated method stub
+			return 0;
 		}
-		
-		
-		
-	}
 
 }
