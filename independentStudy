@@ -1,99 +1,25 @@
 package independentStudy;
 
-import java.awt.Graphics;
 import java.util.*;
-import java.awt.FlowLayout;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 
 
-public class ToDoList extends Schedule implements Comparable
+public class ToDoTester {
+
+	public static void main(String[] args) 
 	{
-		private ArrayList<String>schedule;
-		private ArrayList<String>needToAdd;
-		private int month;
-		private String date;
-		private int year;
-		private int day;
-		
-		public ToDoList() {
-			schedule = new ArrayList<String>();
-			needToAdd = new ArrayList<String>();
-			month = 0;
-			day = 0;
-			date = "";
-			year = 0;
-		}
-		public ToDoList(int date) {
-			super(date);
-			schedule = new ArrayList<String>();
-			needToAdd = new ArrayList<String>();
-			month = 0;
-			day = 0;
-			year = 0;
-		}
-		public ToDoList(ArrayList<String>schedule) {
-			super();
-			needToAdd = new ArrayList<String>();
-			month = 0;
-			date = "";
-			year = 0;
-			
-		}
-		public ToDoList(int month, int day, int year) {
-			this.month = month;
-			this.day = day;
-			this.year = year;
-		}
-		public ArrayList<String> getList() {
-			return schedule;
-		}
-		public void setList(ArrayList<String>schedule) {
-			this.schedule = schedule;
-		}
-		
-		public void completedItem(ArrayList<String>schedule) {
-			System.out.println("Checking things off your list? Enter yes, otherwise no.");
-			Scanner scan = new Scanner(System.in);
-			String str = scan.nextLine();
-			System.out.println("At this time, you can only check things off one at a time.");
-			System.out.println("Please enter the date of the item you want to check off, with specified title.");
-			System.out.println("The date must be inputted as mmddyyy format.");
-			Scanner scan1 = new Scanner(System.in);
-			String str1 = scan.nextLine();
-			int str2 = Integer.parseInt(str1);
-			if(str.equals("yes")) {
-				for (int i = 0; i<schedule.size(); i++) {
-					if (schedule.get(i).equals(str1)) {
-						schedule.remove(i);
-					} else {
-						break;
-					}
-				}
-			} else {
-				System.out.println("Please remember to check things that you have completed. Nothing more, nothing less.");
-			}
-		}
-		
-		public ArrayList<String> viewMyList(ArrayList<String>schedule){
-			ArrayList<String> willShow = new ArrayList<String>();
-			System.out.println("Hey! If you came here, it seems like you want to see your list! Enter yes to make sure!");
-			Scanner scan = new Scanner(System.in);
-			String scan1 = scan.nextLine();
-			if (scan1.equals("yes")) {
-				for (int i= 0; i<schedule.size(); i++) {
-					if(schedule.get(i).equals(date)) {
-						String show = schedule.get(i);
-						willShow.add(show);
-					}
+				ArrayList<String> todaysList = new ArrayList<String>();		
+				System.out.println("Welcome to your daily list!");
+				System.out.println("Here you will find what you need to do for the day! Please enter the date in mm/dd/yyyy format!");
+				Scanner scan = new Scanner(System.in);
+				int date = scan.nextInt();
+				System.out.println("Would you like to see your list? Enter yes to see!");
+				Scanner scan1 = new Scanner(System.in);
+				String afirm = scan1.nextLine();
+				if(afirm.equals("yes")) {
+					viewMyList(todaysList);
+				} else {
+					System.out.println("Thanks for using!");
 				}
 			}
-			return willShow;
-		}
-		@Override
-		public int compareTo(Object arg0) {
-			// TODO Auto-generated method stub
-			return 0;
-		}
 
-}
+	}
