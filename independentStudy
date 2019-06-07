@@ -1,162 +1,131 @@
 THE DATE AND MYDATE VARIABLES KEEP GIVING ME TROUBLE; SCAN10 IS THE USER INPUT OF DATA AS AN INTEGER BECAUSE I WANT TO COMPARE IT WHEN
 PUTTING THINGS IN THE SCHEDULE; I DON'T KNOW WHAT THE ISSUE IS THO.
 
-package CompSci;
+package independentStudy;
 
 import java.util.Scanner;
 import java.util.ArrayList;
 
-public class ScheduleTester
-{
+public class ScheduleTester {
 
-	public static void main(String[] args)
-	{
+	public static void main(String[] args) {
 		Schedule abc = new Schedule();
+		ArrayList<String>schedule = new ArrayList<String>();
 		System.out.println("You are ready to add things to your schedule!");
 		System.out.println("But before you begin, please enter the date in mmddyyyy format!");
 		Scanner scan10 = new Scanner(System.in);
 		int date = scan10.nextInt();
-		abc.setDate(date);
-		System.out.println("Please select one: a) add to schedule or b) visit schedule");
-		String str = scan10.nextLine();
+		ArrayList<Integer>date1 = new ArrayList<Integer>(date);
+		abc.setDate(date1);
+		System.out.println("Please select one: a) add an assignment or b) visit schedule");
+		Scanner scan11 = new Scanner(System.in);
+		String str = scan11.nextLine();
 		if(str.equals("a")) {
-			System.out.println("What would you like to add?");
-			System.out.println("a. A new task, b. A new assignment");
-			Scanner scan1 = new Scanner(System.in);
-			if(scan1.equals("a")) {
-				System.out.println("Enter your task: ");
-				String str1 = scan10.nextLine();
-				System.out.println("How important is it? Rate on a scale of 1-100.");
-				Scanner scan4 = new Scanner(System.in);
-				int num = scan4.nextInt();
-				abc.createNewTask(schedule, str, num);
-				System.out.println("Congratulations! Task has been added!");
-			} else {
-				System.out.println("What type of assignment is it? a. test, b. quiz, c. project, or d. homework?");
-				System.out.println("Please enter your desired choice.");
-				String str1 = scan10.nextLine();
-				if (str1.equals("test")) {
-					abc.addTest(neededList);
-					System.out.println("You've added this upcoming test to your list!");
-					System.out.println("Would you like to add something else?");
-					Scanner scan20 = new Scanner (System.in);
-					String str20 = scan20.nextLine();
-					if (str20.equals("YES")) {
-						System.out.println("Please add new task by clicking run.");
-					} else {
-						System.out.println("Good Job!");
-						break;
-					}
-				} else if (str1.equals("quiz")) {
-					addQuiz(neededList);
-					System.out.println("You've added this upcoming quiz to your list!");
-					System.out.println("Would you like to add something else?");
-					Scanner scan21 = new Scanner (System.in);
-					String str21 = scan21.nextLine();
-					if (str21.equals("YES")) {
-						System.out.println("Please add new task by clicking run.");
-					} else {
-						System.out.println("Good Job!");
-						break;
-					}
-					
-				} else if (str1.equals("project")) {
-					addProject(neededList);
-					System.out.println("You've added this upcoming project to your list!");
-					System.out.println("Would you like to add something else?");
-					Scanner scan22 = new Scanner (System.in);
-					String str22 = scan22.nextLine();
-					if (str22.equals("YES")) {
-						System.out.println("Please add new task by clicking run.");
-					} else {
-						System.out.println("Good Job!");
-						break;
-					}
-				} else if (str1.equals("homework"))
-				System.out.println("Enter YES if you would like to see updated schedule.");
-				Scanner scan5 = new Scanner(System.in);
-				if (scan5.equals("YES")) {
-					abc.getList();
-				} else {
-					System.out.println("Good job for being organized! Thanks for using!");
-				}
-			}
+			System.out.println("What type of assignment would you like to add?");
+			String assign = scan10.nextLine();
+			abc.addAssignment(assign,schedule);
 		} else if(scan10.equals("b")) {
-			System.out.println("Below is your schedule!");
-			retrieveSchBeforeUpdate(neededList);
+			System.out.println("If you are here, you would like to see your schedule.");
+			System.out.println("Please enter yes to move on. No to cancel.");
+			String afirm = scan10.nextLine();
+			if(afirm.equals("yes")) {
+				
+			}
 		}
 		
-	} 
+	}
 }
 	
-package CompSci;
+package independentStudy;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
-	public class Schedule
+public class Schedule
+{
+	private ArrayList<String>schedule;
+	private ArrayList<String>newTask;
+	private ArrayList<Integer>importance;
+	private ArrayList<Integer>date;
+	private String whatToAdd;
+	
+	public Schedule() 
 	{
-		private ArrayList<String>schedule;
-		private ArrayList<String>newTask;
-		private ArrayList<Integer>importance;
-		private ArrayList<Integer>date;
-		
-		public Schedule() 
-		{
-			schedule = new ArrayList<String>();
-			newTask =  new ArrayList<String>();
-			importance = new ArrayList<Integer>();
-			date = new ArrayList<Integer>();
-		}
-		public Schedule(ArrayList<String>schedule, ArrayList<String>newTask, ArrayList<Integer>importance, ArrayList<Integer>date) 
-		{
-			this.schedule = schedule;
-			this.newTask = newTask;
-			this.importance = importance;
-			this.date = date;
-		}
-		public ArrayList<String> getList()
-		{
-			return this.schedule;
-		}
-		public void setList(ArrayList<String>schedule) 
-		{
-			this.schedule = schedule;
-		}
-		public int getDate() {
-			return this.date;
-		}
-		public void setDate(int date) {
-			this.date = date;
-		}
-		public void createNewTask(ArrayList<String>schedule, ArrayList<String>newTask, ArrayList<Integer>importance) 
-		{
-			schedule.add(importance, newTask);
-			
-		}
-		
-		public static ArrayList<String> addAssignment(ArrayList<String>schedule)
-		{
-			String test = "test";
-			String quiz = "quiz";
-			String project = "project";
-			String homework = "homework";
-			
-			for (int i = 0; i<schedule.size(); i++) 
-			{
-				if(schedule.get(i)!= null) 
-				{
-					if (schedule.get(i).getDate<myDate)
-					{
-						schedule.add(i, "test");
-						schedule.add(date);
-					}
-				} else {
-					i++;
-				}
-			}
-		}
-			
+		schedule = new ArrayList<String>();
+		newTask =  new ArrayList<String>();
+		importance = new ArrayList<Integer>(100);
+		date = new ArrayList<Integer>();
+		whatToAdd = "";
 	}
-
-
+	public Schedule(ArrayList<String>schedule, ArrayList<String>newTask, ArrayList<Integer>importance, ArrayList<Integer>date, String whatToAdd) 
+	{
+		this.schedule = schedule;
+		this.newTask = newTask;
+		this.importance = importance;
+		this.date = date;
+		this.whatToAdd = whatToAdd;
+	}
+	public ArrayList<String> getList()
+	{
+		return this.schedule;
+	}
+	public void setList(ArrayList<String>schedule) 
+	{
+		this.schedule = schedule;
+	}
+	public int getDate() {
+		int date1 = 0;
+		for(int i = 0; i<date.size(); i++) {
+			date1 = date.get(i);
+		}
+		return date1;
+	}
+	public void setDate(ArrayList<Integer>date) {
+		this.date = date;
+		}
+	public ArrayList<Integer>getImportance(){
+		return this.importance;
+	}
+	public void setImportance(ArrayList<Integer>importance) {
+		this.importance = importance;
+	}
+	public ArrayList<String> addAssignment(String whatToAdd, ArrayList<String>schedule) 
+	{
+		ArrayList<String>returned = new ArrayList<String>(schedule);
+		System.out.println("Hey! What do you want to add today?");
+		Scanner scan = new Scanner(System.in);
+		String user = scan.nextLine();
+		System.out.println("But before we begin, please place the importance of your assignment from 1-100.");
+		int importa = scan.nextInt();
+		String update = whatToAdd;
+		for (int i = 0; i<returned.size(); i++) {
+			if(user.equals("test")) {
+				schedule.add(importa, user);
+				schedule.add(importa, "TEST");
+			} else if(user.equals("quiz")) {
+				schedule.add(importa, user);
+				schedule.add(importa, "QUIZ");
+			} else if(user.equals("project")) {
+				schedule.add(importa, user);
+				schedule.add(importa, "PROJECT");
+			} else if(user.equals("homework")) {
+				schedule.add(importa, user);
+				schedule.add(importa, "HOMEWORK");
+			} else {
+				System.out.println("At this time you can only enter the following: \n 1. test \n 2. quiz \n 3. project \n 4. homework");
+			}		
+		}
+		System.out.println("Congrats! It has been added!");
+		return returned;
+	}
+	public void getMySchedule(ArrayList<String>schedule, ArrayList<Integer>date){
+		 ArrayList<ArrayList<String> > aList = new ArrayList<ArrayList<String>>(schedule.size()); 
+		int count = 1;
+		 for(int i = 0; i<aList.size(); i++) {
+			for (int j = 0; j<aList.size(); i++) {
+				 System.out.print("Assignment Number: " + count + " " + aList.get(i).get(j) + " "); 
+			}
+			System.out.println();
+		}
+	}
 }
