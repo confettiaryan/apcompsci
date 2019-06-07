@@ -7,6 +7,7 @@ public class ToDoTester {
 
 	public static void main(String[] args) 
 	{
+				ToDoList taylor = new ToDoList();
 				ArrayList<String> todaysList = new ArrayList<String>();		
 				System.out.println("Welcome to your daily list!");
 				System.out.println("Here you will find what you need to do for the day! Please enter the date in mm/dd/yyyy format!");
@@ -16,9 +17,12 @@ public class ToDoTester {
 				Scanner scan1 = new Scanner(System.in);
 				String afirm = scan1.nextLine();
 				if(afirm.equals("yes")) {
-					viewMyList(todaysList);
+					taylor.viewMyList(todaysList);
 				} else {
 					System.out.println("Thanks for using!");
+					System.out.println("Just curious, why did you choose not to see your schedule?");
+					System.out.println("Please enter a sentence or two.");
+					String understand = scan1.nextLine();
 				}
 			}
 
