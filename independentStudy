@@ -24,18 +24,21 @@ public class ScheduleTester {
 			System.out.println("What type of assignment would you like to add?");
 			String assign = scan10.nextLine();
 			abc.addAssignment(assign,schedule);
-		} else if(scan10.equals("b")) {
+			abc.getMySchedule(schedule,date1);
+		} else if(str.equals("b")) {
 			System.out.println("If you are here, you would like to see your schedule.");
 			System.out.println("Please enter yes to move on. No to cancel.");
-			String afirm = scan10.nextLine();
+			Scanner scan12 = new Scanner(System.in);
+			String afirm = scan12.nextLine();
 			if(afirm.equals("yes")) {
-				
+				System.out.println("Please be advised nothing will print if no assignments are added.");
+				abc.getMySchedule(schedule, date1);
+				System.out.println("If nothing is here, then no assignments are found. Please try again.");
 			}
 		}
 		
 	}
-}
-	
+}	
 package independentStudy;
 
 import java.util.ArrayList;
